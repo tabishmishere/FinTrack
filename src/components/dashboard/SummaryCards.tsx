@@ -1,6 +1,6 @@
 import { DollarSign, TrendingDown, TrendingUp, Wallet, PiggyBank } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { summaryData } from "@/data/mock";
+import { summaryData, formatPKR } from "@/data/mock";
 
 const cards = [
   {
@@ -54,7 +54,7 @@ export function SummaryCards() {
               <p className="text-2xl font-bold tracking-tight">
                 {card.isPercentage
                   ? `${card.value}%`
-                  : `$${card.value.toLocaleString("en-US", { minimumFractionDigits: 2 })}`}
+                  : formatPKR(card.value)}
               </p>
               <div className="mt-1 flex items-center gap-1">
                 {card.trend > 0 ? (

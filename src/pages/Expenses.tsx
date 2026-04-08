@@ -102,7 +102,7 @@ export default function Expenses() {
                       </Badge>
                     </TableCell>
                     <TableCell className="text-muted-foreground hidden sm:table-cell">{tx.date}</TableCell>
-                    <TableCell className="text-right font-semibold">${Math.abs(tx.amount).toFixed(2)}</TableCell>
+                    <TableCell className="text-right font-semibold">Rs {Math.abs(tx.amount).toLocaleString("en-PK")}</TableCell>
                     <TableCell className="hidden md:table-cell">
                       <Badge variant="outline" className={`rounded-lg text-xs ${statusStyles[tx.status]}`}>
                         {tx.status}

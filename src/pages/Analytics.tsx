@@ -14,11 +14,11 @@ import {
   Bar,
   Legend,
 } from "recharts";
-import { monthlySpending, categoryBreakdown, summaryData } from "@/data/mock";
+import { monthlySpending, categoryBreakdown } from "@/data/mock";
 import { TrendingUp, TrendingDown, DollarSign, Target } from "lucide-react";
 
 const kpis = [
-  { title: "Avg. Daily Spend", value: "$63.97", trend: -4.2, icon: DollarSign },
+  { title: "Avg. Daily Spend", value: "Rs 17,782", trend: -4.2, icon: DollarSign },
   { title: "Top Category", value: "Food", trend: 0, icon: Target },
   { title: "Income Growth", value: "+6.1%", trend: 6.1, icon: TrendingUp },
   { title: "Expense Reduction", value: "-8.2%", trend: -8.2, icon: TrendingDown },
@@ -71,8 +71,8 @@ export default function Analytics() {
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="hsl(222, 20%, 16%)" />
                   <XAxis dataKey="month" stroke="hsl(215, 20%, 55%)" fontSize={12} tickLine={false} axisLine={false} />
-                  <YAxis stroke="hsl(215, 20%, 55%)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `$${v / 1000}k`} />
-                  <Tooltip contentStyle={{ backgroundColor: "hsl(222, 41%, 9%)", border: "1px solid hsl(222, 20%, 16%)", borderRadius: "12px", color: "hsl(210, 40%, 96%)" }} />
+                  <YAxis stroke="hsl(215, 20%, 55%)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                  <Tooltip contentStyle={{ backgroundColor: "hsl(222, 41%, 9%)", border: "1px solid hsl(222, 20%, 16%)", borderRadius: "12px", color: "hsl(210, 40%, 96%)" }} formatter={(value: number) => [`Rs ${value.toLocaleString("en-PK")}`, undefined]} />
                   <Legend />
                   <Area type="monotone" dataKey="income" stroke="hsl(152, 60%, 48%)" fill="url(#aIncome)" strokeWidth={2} />
                   <Area type="monotone" dataKey="spending" stroke="hsl(238, 80%, 66%)" fill="url(#aSpend)" strokeWidth={2} />
@@ -95,7 +95,7 @@ export default function Analytics() {
                       <Cell key={i} fill={entry.color} />
                     ))}
                   </Pie>
-                  <Tooltip contentStyle={{ backgroundColor: "hsl(222, 41%, 9%)", border: "1px solid hsl(222, 20%, 16%)", borderRadius: "12px", color: "hsl(210, 40%, 96%)" }} />
+                  <Tooltip contentStyle={{ backgroundColor: "hsl(222, 41%, 9%)", border: "1px solid hsl(222, 20%, 16%)", borderRadius: "12px", color: "hsl(210, 40%, 96%)" }} formatter={(value: number) => [`Rs ${value.toLocaleString("en-PK")}`, undefined]} />
                 </PieChart>
               </ResponsiveContainer>
             </div>
@@ -113,8 +113,8 @@ export default function Analytics() {
               <BarChart data={monthlySpending}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(222, 20%, 16%)" />
                 <XAxis dataKey="month" stroke="hsl(215, 20%, 55%)" fontSize={12} tickLine={false} axisLine={false} />
-                <YAxis stroke="hsl(215, 20%, 55%)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `$${v / 1000}k`} />
-                <Tooltip contentStyle={{ backgroundColor: "hsl(222, 41%, 9%)", border: "1px solid hsl(222, 20%, 16%)", borderRadius: "12px", color: "hsl(210, 40%, 96%)" }} />
+                <YAxis stroke="hsl(215, 20%, 55%)" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
+                <Tooltip contentStyle={{ backgroundColor: "hsl(222, 41%, 9%)", border: "1px solid hsl(222, 20%, 16%)", borderRadius: "12px", color: "hsl(210, 40%, 96%)" }} formatter={(value: number) => [`Rs ${value.toLocaleString("en-PK")}`, undefined]} />
                 <Legend />
                 <Bar dataKey="income" fill="hsl(152, 60%, 48%)" radius={[8, 8, 0, 0]} barSize={28} />
                 <Bar dataKey="spending" fill="hsl(238, 80%, 66%)" radius={[8, 8, 0, 0]} barSize={28} />

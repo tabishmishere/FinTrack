@@ -62,7 +62,7 @@ export default function Signup() {
                 Google
               </Button>
               <Button variant="outline" className="rounded-xl border-border/40 bg-secondary hover:bg-secondary/80">
-                <Github className="mr-2 h-4 w-4" />
+                <GitFork className="mr-2 h-4 w-4" />
                 GitHub
               </Button>
             </div>

@@ -38,7 +38,7 @@ export default function Income() {
                     <Badge variant="secondary" className="rounded-lg text-xs font-normal bg-secondary/60">{tx.category}</Badge>
                   </TableCell>
                   <TableCell className="text-muted-foreground hidden sm:table-cell">{tx.date}</TableCell>
-                  <TableCell className="text-right font-semibold text-success">+${tx.amount.toFixed(2)}</TableCell>
+                  <TableCell className="text-right font-semibold text-success">+Rs {tx.amount.toLocaleString("en-PK")}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -44,7 +44,7 @@ export function RecentTransactions() {
                 </TableCell>
                 <TableCell className="text-muted-foreground hidden sm:table-cell">{tx.date}</TableCell>
                 <TableCell className={`text-right font-semibold ${tx.amount > 0 ? "text-success" : "text-foreground"}`}>
-                  {tx.amount > 0 ? "+" : ""}${Math.abs(tx.amount).toFixed(2)}
+                  {tx.amount > 0 ? "+" : "-"}Rs {Math.abs(tx.amount).toLocaleString("en-PK")}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Badge variant="outline" className={`rounded-lg text-xs ${statusStyles[tx.status]}`}>

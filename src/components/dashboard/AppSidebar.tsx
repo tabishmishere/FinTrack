@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const mainItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
+  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Expenses", url: "/expenses", icon: Receipt },
   { title: "Income", url: "/income", icon: DollarSign },
   { title: "Budgets", url: "/budgets", icon: PiggyBank },
@@ -63,7 +63,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <NavLink
                       to={item.url}
-                      end={item.url === "/"}
+                      end={item.url === "/dashboard"}
                       className="rounded-xl transition-all duration-200 hover:bg-sidebar-accent"
                       activeClassName="bg-primary/10 text-primary font-medium"
                     >

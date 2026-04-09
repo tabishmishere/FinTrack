@@ -10,8 +10,7 @@ import Income from "@/pages/Income";
 import Budgets from "@/pages/Budgets";
 import Analytics from "@/pages/Analytics";
 import SettingsPage from "@/pages/SettingsPage";
-import Login from "@/pages/Login";
-import Signup from "@/pages/Signup";
+import Auth from "@/pages/Auth";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,16 +22,15 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Auth />} />
           <Route element={<AppLayout />}>
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/expenses" element={<Expenses />} />
             <Route path="/income" element={<Income />} />
             <Route path="/budgets" element={<Budgets />} />
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

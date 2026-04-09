@@ -34,14 +34,18 @@ export default function Expenses() {
   const filtered = transactions
     .filter((tx) => tx.type === "expense")
     .filter((tx) => tx.name.toLowerCase().includes(search.toLowerCase()))
-    .filter((tx) => category === "all" || tx.category.toLowerCase() === category);
+    .filter(
+      (tx) => category === "all" || tx.category.toLowerCase() === category,
+    );
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Expenses</h1>
-          <p className="text-sm text-muted-foreground">Manage and track your expenses</p>
+          <p className="text-sm text-muted-foreground">
+            Manage and track your expenses
+          </p>
         </div>
         <AddExpenseDialog />
       </div>
@@ -65,7 +69,9 @@ export default function Expenses() {
               <SelectContent className="glass rounded-xl">
                 <SelectItem value="all">All Categories</SelectItem>
                 {categories.map((cat) => (
-                  <SelectItem key={cat} value={cat.toLowerCase()}>{cat}</SelectItem>
+                  <SelectItem key={cat} value={cat.toLowerCase()}>
+                    {cat}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
@@ -79,32 +85,56 @@ export default function Expenses() {
             <TableHeader>
               <TableRow className="border-border/30 hover:bg-transparent">
                 <TableHead className="text-muted-foreground/60">Name</TableHead>
-                <TableHead className="text-muted-foreground/60">Category</TableHead>
-                <TableHead className="text-muted-foreground/60 hidden sm:table-cell">Date</TableHead>
-                <TableHead className="text-muted-foreground/60 text-right">Amount</TableHead>
-                <TableHead className="text-muted-foreground/60 hidden md:table-cell">Status</TableHead>
+                <TableHead className="text-muted-foreground/60">
+                  Category
+                </TableHead>
+                <TableHead className="text-muted-foreground/60 hidden sm:table-cell">
+                  Date
+                </TableHead>
+                <TableHead className="text-muted-foreground/60 text-right">
+                  Amount
+                </TableHead>
+                <TableHead className="text-muted-foreground/60 hidden md:table-cell">
+                  Status
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {filtered.length === 0 ? (
                 <TableRow>
-                  <TableCell colSpan={5} className="py-12 text-center text-muted-foreground">
+                  <TableCell
+                    colSpan={5}
+                    className="py-12 text-center text-muted-foreground"
+                  >
                     No expenses found
                   </TableCell>
                 </TableRow>
               ) : (
                 filtered.map((tx) => (
-                  <TableRow key={tx.id} className="border-border/20 hover:bg-secondary/40 transition-colors">
+                  <TableRow
+                    key={tx.id}
+                    className="border-border/20 hover:bg-secondary/40 transition-colors"
+                  >
                     <TableCell className="font-medium">{tx.name}</TableCell>
                     <TableCell>
-                      <Badge variant="secondary" className="rounded-lg text-xs font-normal bg-secondary/60">
+                      <Badge
+                        variant="secondary"
+                        className="rounded-lg text-xs font-normal bg-secondary/60"
+                      >
                         {tx.category}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-muted-foreground hidden sm:table-cell">{tx.date}</TableCell>
-                    <TableCell className="text-right font-semibold">Rs {Math.abs(tx.amount).toLocaleString("en-PK")}</TableCell>
+                    <TableCell className="text-muted-foreground hidden sm:table-cell">
+                      {tx.date}
+                    </TableCell>
+                    <TableCell className="text-right font-semibold">
+                      Rs {Math.abs(tx.amount).toLocaleString("en-PK")}
+                    </TableCell>
                     <TableCell className="hidden md:table-cell">
-                      <Badge variant="outline" className={`rounded-lg text-xs ${statusStyles[tx.status]}`}>
+                      <Badge
+                        variant="outline"
+                        className={`rounded-lg text-xs ${statusStyles[tx.status]}`}
+                      >
                         {tx.status}
                       </Badge>
                     </TableCell>
